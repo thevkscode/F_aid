@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../whatsapp-gpt-main"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "frontend"
+  }
+}

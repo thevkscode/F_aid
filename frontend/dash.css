@@ -1,0 +1,36 @@
+.button:hover {
+  text-decoration: none;
+  color: white;
+  background-color: gray;
+}
+
+#rankdiv {
+  overflow: auto;
+}
+
+#rankdiv thead th {
+  position: sticky;
+  top: 0;
+}
+
+#tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tbody tr:hover {
+  background-color: gray;
+  color: white;
+}
+
+#thbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#thbody tr:hover {
+  background-color: gray;
+  color: white;
+  font-size: large;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.164),
+  0 8px 16px rgba(0, 0, 0, 0.139);
+  border-radius: 0.4rem;
+}
+

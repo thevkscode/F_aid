@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F-AID</title>
+    <link rel="icon" type="image/x-icon" href="images/finance.png" />
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #videoBackground {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      #content {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; box-sizing: border-box">
+    <section id="first" style="height: 100vh; position: relative">
+      <video id="videoBackground" autoplay muted loop>
+        <source src="images/main.mp4" type="video/mp4" />
+      </video>
+
+      <div
+        id="content"
+        style="display: flex; justify-content: space-between; height: 100vh"
+      >
+        <div style="position: relative">
+          <img
+            src="images/finance.png"
+            height="100"
+            width="100"
+            style="padding: 1rem; position: fixed"
+          />
+
+          <!-- <h1 style="color: black; font-size: 2.5rem; margin: 0">F-AID</h1> -->
+        </div>
+        <div
+          style="
+            display: flex;
+            height: 100%;
+            width: 30%;
+            padding-top: 10rem;
+            padding-right: 2rem;
+            flex-direction: column;
+            justify-content: first baseline;
+          "
+        >
+          <h1
+            id="title"
+            style="
+              color: black;
+              font-size: 5rem;
+              display: flex;
+              align-items: end;
+            "
+          ></h1>
+          <a href="DashBoard.html" target="_blank">
+            <button
+              style="
+                border: none;
+                background-color: grey;
+                font-size: xx-large;
+                color: black;
+                border-radius: 1rem;
+                padding: 1rem;
+              "
+            >
+              Go to DashBoard
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- <div
+        style="position: absolute; bottom: 0; width: 100%; text-align: center"
+      ></div> -->
+
+      <div
+        id="float-button"
+        style="
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          align-items: end;
+          color: red;
+          visibility: hidden;
+        "
+      >
+        <a href="DashBoard.html" target="_blank">
+          <button
+            style="
+              border: none;
+              background-color: #350709;
+              font-size: xx-large;
+              color: white;
+              border-radius: 1rem;
+              padding: 1rem;
+            "
+          >
+            Go to DashBoard
+          </button>
+        </a>
+      </div>
+    </section>
+    <section id="second" style="height: 100vh; display: flex; margin: 2rem">
+      <div
+        style="
+          display: flex;
+          flex: 0.5;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <h1 style="font-size: 4rem" id="what">What is Pair Trading ?</h1>
+        <p style="font-size: 1.5rem; line-height: 2rem" id="what-ans"></p>
+      </div>
+      <div style="display: flex; flex: 0.5"><img src="images/bull3.jpg" /></div>
+    </section>
+    <section id="third" style="height: 100vh; display: flex; margin: 2rem">
+      <div style="display: flex; flex: 0.6">
+        <img src="images/process1.jpg" style="width: 100%" />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex: 0.4;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <h1 style="font-size: 4rem">How Pair Trading works ?</h1>
+        <p style="font-size: 1.5rem;line-height: 2rem" id="how-ans"></p>
+      </div>
+    </section>
+    <section id="fourth" style="height: 100vh; display: flex; margin: 2rem">
+      <div
+        style="
+          display: flex;
+          flex: 0.4;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <h1 style="font-size: 4rem">Why to opt Pair Trading ?</h1>
+        <p style="font-size: 1.5rem;line-height: 2rem" id="why-ans"></p>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex: 0.6;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <img src="images/neutral1.png" style="width: 80%" height="80%" />
+      </div>
+    </section>
+
+    <script src="main.js"></script>
+  </body>
+</html>

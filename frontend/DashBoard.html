@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dash.css" />
+    <title>F-aid</title>
+    <link rel="icon" type="image/x-icon" href="images/finance.png" />
+  </head>
+
+  <body>
+    <section
+      style="display: flex; flex-direction: row; height: 100vh; width: 100vw"
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          flex: 0.8;
+          /* padding: 0 2rem; */
+        "
+      >
+        <div style="height: 75vh">
+          <div
+            style="display: flex; height: 12%; justify-content: space-between"
+          >
+            <div>
+              <h3 id="stockname">Pair Trading Analyser</h3>
+            </div>
+            <div style="display: flex; padding: 1rem">
+              <button
+                class="button"
+                id="closingprice"
+                style="
+                  margin: 0.3rem;
+                  border-radius: 1rem;
+                  border: none;
+                  cursor: pointer;
+                  text-decoration: none;
+                "
+              >
+                Closing Price
+              </button>
+              <button
+                class="button"
+                id="rsi"
+                style="
+                  margin: 0.3rem;
+                  border-radius: 1rem;
+                  border: none;
+                  cursor: pointer;
+                  text-decoration: none;
+                "
+              >
+                RSI
+              </button>
+              <button
+                class="button"
+                id="stockA"
+                style="
+                  margin: 0.3rem;
+                  border-radius: 1rem;
+                  border: none;
+                  cursor: pointer;
+                  text-decoration: none;
+                "
+              >
+                Stock-A
+              </button>
+              <button
+                class="button"
+                id="stockB"
+                style="
+                  margin: 0.3rem;
+                  border-radius: 1rem;
+                  border: none;
+                  cursor: pointer;
+                  text-decoration: none;
+                "
+              >
+                Stock-B
+              </button>
+            </div>
+          </div>
+          <div
+            style="
+              height: 88%;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.164),
+                0 8px 16px rgba(0, 0, 0, 0.139);
+              border-radius: 2rem 2rem 2rem 0;
+            "
+          >
+            <canvas
+              id="myChart"
+              style="width: 100%; padding-left: 2rem; padding-bottom: 0.5rem"
+            ></canvas>
+          </div>
+        </div>
+
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: gray;
+            color: black;
+            border-radius: 0 2rem 0 2rem;
+          "
+        >
+          <h4>Date</h4>
+          <h4 id="tablecol2">Column 2</h4>
+          <h4 id="tablecol3">Column 3</h4>
+          <h4 id="tablecol4" >Trading Point</h4>
+        </div>
+        <div
+          id="rankdiv"
+          class="ranking"
+          style="height: 20vh; overflow: scroll"
+        >
+          <table id="stable" style="width: 100%">
+            <tbody id="thbody" style="padding-top: 2rem"></tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex: 0.2;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin: 2rem;
+        "
+      >
+        <div
+          style="
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              /* padding-bottom: 1rem; */
+              height: 20%;
+            "
+          >
+            <fieldset style="border-radius: 1rem; height: 100%">
+              <legend>From</legend>
+              <input
+                style="border: none; outline: none"
+                type="date"
+                id="from"
+                min="2019-08-01"
+                max="2020-02-26"
+              />
+            </fieldset>
+            <fieldset style="border-radius: 1rem; height: 100%">
+              <legend>To</legend>
+              <input
+                style="border: none; outline: none"
+                type="date"
+                id="to"
+                min="2019-08-02"
+                max="2020-02-27"
+              />
+            </fieldset>
+          </div>
+          <button
+            id="calculate"
+            style="
+              width: 100%;
+              color: black;
+              background-color: gray;
+              border: none;
+              border-radius: 1rem;
+              height: 30%;
+              font-weight: bold;
+              font-size: larger;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                0 8px 16px rgba(0, 0, 0, 0.5);
+            "
+          >
+            Calculate
+          </button>
+        </div>
+        <div
+          style="
+            height: 60vh;
+            width: 100%;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            overflow: auto;
+          "
+        >
+          <div
+            style="display: flex; justify-content: space-around; height: 10%"
+          >
+            <h3>Pair Ranking</h3>
+            <select id="sort" style="border-radius: 1rem">
+              <option value="" disabled selected hidden>Sort By</option>
+              <option value="profit" onclick="sorting(this);">Profit</option>
+              <option value="correlation" onclick="sorting(this);">
+                Correlation
+              </option>
+            </select>
+          </div>
+          <div
+            style="
+              margin-top: 1rem;
+              width: 100%;
+              display: flex;
+              justify-content: space-around;
+            "
+          >
+            <h4>Stock A</h4>
+            <h4>Stock B</h4>
+          </div>
+
+          <div id="rankdiv" class="ranking" style="max-height: 70%">
+            <table id="table" style="width: 100%; height: 85%">
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          style="
+            height: 20vh;
+            width: 100%;
+            border-radius: 2rem;
+            /* margin-bottom: 1rem; */
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <div>
+            <h2>Profit</h2>
+            <h3 id="profit">0</h3>
+          </div>
+          <div>
+            <h2>Correlation</h2>
+            <h3 id="correlation">1</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
