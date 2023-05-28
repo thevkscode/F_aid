@@ -65,7 +65,7 @@ The closing price is an essential data point used in technical analysis. Traders
 
 ## Frontend Implementation
 
-1. `Graph.js`:
+1. `Chart.js`:
    - JavaScript library for creating graphical representations on the frontend.
    - Provides tools and functions for plotting graphs and charts.
    - Plots RSI values of both companies in a pair.
